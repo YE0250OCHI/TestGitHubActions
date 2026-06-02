@@ -1,0 +1,29 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    step:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v4
+      with: 
+        dotnet-version: '10.0'
+      
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build C# Application
+      run: dotnet build --no-restore
+      
+    - name: Run tests
+      run: dotnet test --no-build --verbosity normal
+    
