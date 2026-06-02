@@ -1,11 +1,5 @@
 ﻿Console.WriteLine("Hello, World!");
 
-ShowConsole(1);
+Console.WriteLine($"{Hoge().Value}");
 
-
-void ShowConsole(int? input)
-{
-    int value = input.Value;
-
-    Console.WriteLine($"{value}");
-}
+int? Hoge() => 123;
